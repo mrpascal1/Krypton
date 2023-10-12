@@ -6,43 +6,43 @@ import com.shahid.krypton.auth.types.KAlignmentTypes
 import com.shahid.krypton.auth.types.KGravityTypes
 
 data class AuthLayoutModel(
-    val fields: ArrayList<Fields>? = null,
-    val title: Fields? = null,
-    val backgroundImages: BackgroundImages? = null,
-    val uiProperties: UIProperties? = null
+    var fields: ArrayList<Field>? = null,
+    var title: Field? = null,
+    var backgroundImages: BackgroundImages? = null,
+    var uiProperties: UIProperties? = null
 ) {
-    data class Fields(
-        val title: String? = null,
-        val hint: String? = null,
-        val type: FieldTypes? = null,
-        val uiProperties: UIProperties? = null,
-        val clickAction: String? = null
+    data class Field(
+        var title: String? = null,
+        var hint: String? = null,
+        var type: FieldTypes? = null,
+        var uiProperties: UIProperties? = null,
+        var clickAction: String? = null
     )
 
     data class BackgroundImages(
-        val registrationBackground: Drawable? = null,
-        val loginBackground: Drawable? = null
+        var registrationBackground: Drawable? = null,
+        var loginBackground: Drawable? = null
     )
 
     data class UIProperties(
-        val margin: KMargin? = null,
-        val padding: KPadding? = null,
-        val alignment: KAlignmentTypes? = null,
-        val gravity: KGravityTypes? = null,
-        val textSize: Float? = null,
-        val hintSize: Float? = null
+        var margin: KMargin? = null,
+        var padding: KPadding? = null,
+        var alignment: KAlignmentTypes? = null,
+        var gravity: KGravityTypes? = null,
+        var textSize: Float? = null,
+        var hintSize: Float? = null
     ) {
         data class KMargin(
-            val top: Float? = null,
-            val bottom: Float? = null,
-            val start: Float? = null,
-            val end: Float? = null
+            var top: Float? = null,
+            var bottom: Float? = null,
+            var start: Float? = null,
+            var end: Float? = null
         )
         data class KPadding(
-            val top: Int? = null,
-            val bottom: Int? = null,
-            val start: Int? = null,
-            val end: Int? = null
+            var top: Int? = null,
+            var bottom: Int? = null,
+            var start: Int? = null,
+            var end: Int? = null
         )
     }
 }

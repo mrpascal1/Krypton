@@ -6,6 +6,9 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.core.view.marginTop
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.shahid.krypton.auth.adapters.AuthFieldsAdapter
 import com.shahid.krypton.auth.model.AuthLayoutModel
 import com.shahid.krypton.auth.types.FieldTypes
 import com.shahid.krypton.auth.types.KAlignmentTypes
@@ -26,6 +29,7 @@ class LoginView : LinearCustomLayout {
     }
 
     private var authLayoutModel: AuthLayoutModel? = null
+    private var adapter: AuthFieldsAdapter? = null
 
     private val binding = LoginViewBinding.inflate(LayoutInflater.from(context))
 
@@ -42,6 +46,8 @@ class LoginView : LinearCustomLayout {
 
     fun initComponent() {
         bindAuthModelToUI()
+        initRecyclerview()
+        setDataToAdapter()
     }
 
 
@@ -109,5 +115,19 @@ class LoginView : LinearCustomLayout {
         }
     }
 
+    private fun initAdapter() {
+        adapter = AuthFieldsAdapter()
+    }
+    private fun initRecyclerview() {
+        initAdapter()
+        binding.recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        binding.recyclerView.adapter = adapter
+    }
+
+    private fun setDataToAdapter() {
+        authLayoutModel?.fields?.let {
+            adapter?.setData(it)
+        }
+    }
 
 }
